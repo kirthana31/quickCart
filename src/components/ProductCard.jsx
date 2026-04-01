@@ -1,13 +1,17 @@
-import '../styles/ProductCard.css';
+import { useCart } from "../context/CartContext";
 
 function ProductCard({ product }) {
+  const { addToCart } = useCart();
+
   return (
-    <div className="product-card">
-      <img src={product.image} />
+    <div style={{ border: "1px solid black", margin: "10px", padding: "10px" }}>
       <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>${product.price}</p>
-      <p>{product.category}</p>
+      <p>Price: ₹{product.price}</p>
+      <p>Category: {product.category}</p>
+
+      <button onClick={() => addToCart(product)}>
+        Add to Cart
+      </button>
     </div>
   );
 }

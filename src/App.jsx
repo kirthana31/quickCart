@@ -1,28 +1,17 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import CategoryPage from "./components/CategoryPage";
+import CartPage from "./components/CartPage";
 
 function App() {
-  const [cart, setCart] = useState([]);
-
-  const addToCart = () => {
-    setCart([...cart, "Item"]);
-  };
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>QuickCart</h1>
-
-      <button onClick={addToCart}>
-        Add to Cart
-      </button>
-
-      <h2>Cart Items: {cart.length}</h2>
-
-      <ul>
-        {cart.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
+        <Route path="/cart" element={<CartPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
