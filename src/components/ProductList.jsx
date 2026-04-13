@@ -1,10 +1,13 @@
+import productsData from "../data/products";
 import ProductCard from "./ProductCard";
 
 function ProductList({ products }) {
+  const data = products || productsData;
+
   return (
     <div>
-      {products.map((item) => (
-        <ProductCard key={item.id} product={item} />
+      {data.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
